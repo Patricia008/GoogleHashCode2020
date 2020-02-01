@@ -2,10 +2,9 @@
   "name": "google-hashcode-2020",
   "version": "1.0.0",
   "description": "Repo to work for Google Hashcode competition",
-  "main": "index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "practice-impl0": "ts-node src/practiceProblem/algorithm/impl0.ts",
+    "20feb-impl0": "ts-node src/20feb/algorithm/impl0.ts"
   },
   "repository": {
     "type": "git",
