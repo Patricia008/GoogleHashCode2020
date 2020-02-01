@@ -1,0 +1,61 @@
+{
+	"extends": ["tslint:recommended"],
+	"linterOptions": {
+		"exclude": ["./test/**/*"]
+	},
+	"rules": {
+		"max-line-length": {
+			"options": [120]
+		},
+		"indent": {"options": "tabs"},
+		"semicolon": {"options":"never"},
+		"member-access": {"options": "no-public"},
+		"no-consecutive-blank-lines": {"options": 2},
+		"quotemark": {"options": ["single", "jsx-double"]},
+		"no-unused-expression": {"options": ["allow-fast-null-checks", "allow-tagged-template"]},
+		"arrow-parens": false,
+		"import-spacing": true,
+		"no-empty-interface": false,
+		"no-empty": false,
+		"max-classes-per-file": false,
+		"newline-before-return": true,
+		"ordered-imports": {"options": {
+			"named-imports-order": "case-insensitive",
+			"import-sources-order": "any"
+		}},
+		"prefer-const": {
+			"severity": "warn"
+		},
+		"no-console": false,
+		"no-duplicate-switch-case": true,
+		"no-eval": true,
+
+		"member-ordering": false,
+		"object-literal-sort-keys": false,
+
+		"whitespace": {"options": [
+			"check-branch",
+			"check-decl",
+			"check-operator",
+			"check-module",
+			"check-separator",
+			"check-rest-spread",
+			"check-type",
+			"check-typecast",
+			"check-type-operator",
+			"check-preblock"
+		]},
+
+		"trailing-comma": {"options": {
+			"singleline": "never",
+			"multiline": "always"
+		}},
+
+		"ban-types": {"options": [
+			["Boolean", "Use 'boolean' instead."],
+			["Object", "Use 'object' instead."],
+			["Number", "Use 'number' instead."],
+			["String", "Use 'string' instead."]
+		]}
+	}
+}

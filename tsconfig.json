@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"outDir": "./built",
+		"sourceMap": true,
+		"noImplicitAny": false,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"target": "es2016",
+		"baseUrl": "./",
+		"paths" : {
+			"~/*": ["./src/*"],
+		}
+	},
+	"include": [
+		"./src/**/*",
+	],
+}
