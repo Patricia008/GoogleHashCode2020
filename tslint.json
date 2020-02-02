@@ -19,10 +19,6 @@
 		"no-empty": false,
 		"max-classes-per-file": false,
 		"newline-before-return": true,
-		"ordered-imports": {"options": {
-			"named-imports-order": "case-insensitive",
-			"import-sources-order": "any"
-		}},
 		"prefer-const": {
 			"severity": "warn"
 		},
