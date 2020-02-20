@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Repo to work for Google Hashcode competition",
   "scripts": {
-    "impl0": "ts-node src/20feb/algorithm/impl0.ts"
+    "impl0": "ts-node src/20feb/algorithm/impl0.ts",
+    "start": "ts-node src/20feb/algorithm/impl0.ts"
   },
   "repository": {
     "type": "git",
