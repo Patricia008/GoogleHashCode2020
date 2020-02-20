@@ -14,16 +14,15 @@ export const readInputData = (fileName: string): InputData => {
 	const libraries = new Array<Library>()
 	let currentLibraryId = 0
 	for (let i=0; i<parseInt(libraryCount)*2; i = i+2) {
-		currentLibraryId++
 		console.log('Library',contentRows[i+2])
-
+		
 		const firstLibraryRow = contentRows[i+2]
 		const secondLibraryRow = contentRows[i+3]
-
+		
 		let [bookCount, signupDuration, shippableBookCount] = firstLibraryRow.split(' ')
 		let bookIds = secondLibraryRow.split(' ').map(id => parseInt(id))
 		const library: Library = {
-			id: currentLibraryId,
+			id: currentLibraryId++,
 			bookCount: parseInt(bookCount),
 			signupDuration: parseInt(signupDuration),
 			shippableBookCount: parseInt(shippableBookCount),
@@ -34,7 +33,12 @@ export const readInputData = (fileName: string): InputData => {
 	return inputData
 }
 
-export const writeSubmissionResult = (fileName: string, types: string[]) => {
-	const stringToBeWritten = types.length + '\n' + types.join(' ')
+export const writeSubmissionResult = (fileName: string, libs: any[]) => {
+	let stringToBeWritten = `${libs.length}\n`
+
+	libs.map(lib => {
+		stringToBeWritten += `${lib.id} ${lib.bookCount}\n${lib.bookIds.join(' ')}\n`
+	})
+
 	writeToFile(fileName, stringToBeWritten)
 }
