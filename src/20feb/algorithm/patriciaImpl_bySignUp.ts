@@ -9,7 +9,7 @@ const files = {
 	f: 'f_libraries_of_the_world',
 }
 
-const fileName = files.d
+const fileName = files.f
 
 const contents = readInputData(`files/20feb/in/${fileName}.txt`)
 // console.log(contents)
@@ -17,20 +17,23 @@ const contents = readInputData(`files/20feb/in/${fileName}.txt`)
 let scannedBooks: number[] = []
 let selectedLibs = []
 
-while (contents.libraries.length > 0) {
+// while (contents.libraries.length > 0) {
 
-	findMaxScoresLibs()
-}
+// 	findMaxScoresLibs()
+// }
 
 // console.log(selectedLibs)
-// selectedLibs = contents.libraries
-// selectedLibs.sort((a, b) => {
-// 		// days to complete lib
-// 		const aScore = a.bookCount / a.shippableBookCount
-// 		const bScore = b.bookCount / b.shippableBookCount
+selectedLibs = contents.libraries
 
-// 		return bScore - aScore
-// 	})
+const bySignUpDuration = (a, b) => {
+	// days to complete lib
+	const aScore = a.signupDuration
+	const bScore = b.signupDuration
+
+	return aScore - bScore
+}
+
+selectedLibs.sort(bySignUpDuration)
 
 selectedLibs.forEach(lib => {
 	lib.bookIds.sort((a, b) => {
@@ -42,7 +45,7 @@ selectedLibs.forEach(lib => {
 	})
 })
 
-writeSubmissionResult(`files/20feb/out/patriciaImpl/${fileName}_byScore_out.txt`, selectedLibs)
+writeSubmissionResult(`files/20feb/out/patriciaImpl/${fileName}_bySignUp_out.txt`, selectedLibs)
 
 function findMaxScoresLibs() {
 	contents.libraries.sort((a, b) => {

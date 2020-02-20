@@ -14,7 +14,7 @@ export const readInputData = (fileName: string): InputData => {
 	const libraries = new Array<Library>()
 	let currentLibraryId = 0
 	for (let i=0; i<parseInt(libraryCount)*2; i = i+2) {
-		console.log('Library',contentRows[i+2])
+		// console.log('Library',contentRows[i+2])
 		
 		const firstLibraryRow = contentRows[i+2]
 		const secondLibraryRow = contentRows[i+3]
