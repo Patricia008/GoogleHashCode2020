@@ -12,7 +12,9 @@ export const readInputData = (fileName: string): InputData => {
 	inputData.dayCount = parseInt(dayCount)
 
 	const libraries = new Array<Library>()
+	let currentLibraryId = 0
 	for (let i=0; i<parseInt(libraryCount)*2; i = i+2) {
+		currentLibraryId++
 		console.log('Library',contentRows[i+2])
 
 		const firstLibraryRow = contentRows[i+2]
@@ -21,10 +23,10 @@ export const readInputData = (fileName: string): InputData => {
 		let [bookCount, signupDuration, shippableBookCount] = firstLibraryRow.split(' ')
 		let bookIds = secondLibraryRow.split(' ').map(id => parseInt(id))
 		const library: Library = {
-			id: i,
-			bookCount,
-			signupDuration,
-			shippableBookCount,
+			id: currentLibraryId,
+			bookCount: parseInt(bookCount),
+			signupDuration: parseInt(signupDuration),
+			shippableBookCount: parseInt(shippableBookCount),
 			bookIds
 		}
 		inputData.libraries.push(library)

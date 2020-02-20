@@ -1,13 +1,13 @@
 export class Library {
-    id: Number
-    bookCount: string
-    signupDuration: string
-    shippableBookCount: string
-    bookIds: Number[]
+    id: number
+    bookCount: number
+    signupDuration: number
+    shippableBookCount: number
+    bookIds: number[]
 }
 
 export class InputData {
     libraries: Library[] = new Array<Library>()
-    bookScores: Map<Number, Number>
-    dayCount: Number
+    bookScores: Map<number, number>
+    dayCount: number
 }
