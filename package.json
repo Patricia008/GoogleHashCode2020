@@ -6,7 +6,8 @@
 	"impl0": "ts-node src/20feb/algorithm/impl0.ts",
 	"patriciaImpl": "ts-node src/20feb/algorithm/patriciaImpl.ts",
 	"patriciaImpl_bySignUp": "ts-node src/20feb/algorithm/patriciaImpl_bySignUp.ts",
-    "start": "ts-node src/20feb/algorithm/impl0.ts"
+    "start": "ts-node src/20feb/algorithm/impl0.ts",
+    "dutzu": "ts-node src/20feb/algorithm/Dutzu_Faster.ts"
   },
   "repository": {
     "type": "git",
