@@ -17,8 +17,15 @@ class LibraryResult {
 }
 
 const libraryPotential = (library: Library, alreadyScanned: number[], daysRemaining: number, bookScores: Map<number,number>): LibraryResult => {
+    // console.time('libraryPotential')
     const productiveDays = daysRemaining - library.signupDuration
-    if (productiveDays <= 0) { return null }
+    if (productiveDays <= 0) { 
+        return {
+        library,
+        bookSequence: [],
+        scoreYield: 0
+    }
+}
 
     const notScannedBookIds = library.bookIds.filter(x => !alreadyScanned.includes(x))
     const maxBookYield = Math.min((productiveDays * library.shippableBookCount), notScannedBookIds.length)
@@ -32,6 +39,7 @@ const libraryPotential = (library: Library, alreadyScanned: number[], daysRemain
     const totalScoreYield = sortedBooks.map(tuple => tuple[1]).reduce((previousValue, currentValue) => previousValue + currentValue)
     // console.log('Library ', library.id, ' bookIds: ', chosenBookIds, ' totalScore ', totalScoreYield)
 
+    // console.timeEnd('libraryPotential')
     return {
         library,
         bookSequence: chosenBookIds,
@@ -43,21 +51,20 @@ const getNextBestLibrary = (availableLibraries: Library[], alreadyScanned: numbe
     if (availableLibraries.length === 0) return null
     const sortedLibraryYields = availableLibraries.map(library => libraryPotential(library, alreadyScanned, daysRemaining, bookScores))
         .sort((a, b) => {
-            if (a?.scoreYield > b?.scoreYield) return 1
-            if (a?.scoreYield < b?.scoreYield) return -1
+            if (a.scoreYield > b.scoreYield) return -1
+            if (a.scoreYield < b.scoreYield) return 1
             return 0
         })
 
-    // console.log(sortedLibraryYields)
     return sortedLibraryYields[0]
 }
 
 // const inputData: InputData = readInputData('files/20feb/in/a_example.txt')
 // const inputData: InputData = readInputData('files/20feb/in/b_read_on.txt')
 // const inputData: InputData = readInputData('files/20feb/in/c_incunabula.txt')
-// const inputData: InputData = readInputData('files/20feb/in/d_tough_choices.txt')
+const inputData: InputData = readInputData('files/20feb/in/d_tough_choices.txt')
 // const inputData: InputData = readInputData('files/20feb/in/f_libraries_of_the_world.txt')
-const inputData: InputData = readInputData('files/20feb/in/e_so_many_books.txt')
+// const inputData: InputData = readInputData('files/20feb/in/e_so_many_books.txt')
 
 
 // console.log(inputData)
@@ -66,6 +73,13 @@ const chosenLibraries: LibraryResult[] = []
 let alreadyScanned: number[] = []
 let daysRemaining = inputData.dayCount
 let currentScore = 0
+
+// const start = Date.now(); console.time('getNextBestLibrary')
+// let currentLibraryResult: LibraryResult = getNextBestLibrary(inputData.libraries,alreadyScanned,daysRemaining,inputData.bookScores)
+// const stop = Date.now(); console.timeEnd('getNextBestLibrary')
+
+// console.log('Duration of getNextBestLibrary: ', stop - start, 'ms - id:', currentLibraryResult.library.id, ' - score - ', currentLibraryResult.scoreYield);
+
 
 while (true) {
     let currentLibraryResult: LibraryResult = getNextBestLibrary(inputData.libraries,alreadyScanned,daysRemaining,inputData.bookScores)
